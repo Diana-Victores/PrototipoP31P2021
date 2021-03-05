@@ -10,17 +10,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Diana
  */
-public class MantenimientoFacultad extends javax.swing.JInternalFrame {
+public class MantenimientoCursos extends javax.swing.JFrame {
 
     /**
-     * Creates new form MantenimientoFacultad
+     * Creates new form MantenimientoCursos
      */
-    public MantenimientoFacultad() {
+    public MantenimientoCursos() {
         initComponents();
     }
 
@@ -45,11 +44,13 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
         BTNBUSCAR = new javax.swing.JButton();
         Label_status = new javax.swing.JLabel();
 
-        jLabel1.setText("Codigo Facultad");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setText("Nombre Facultad");
+        jLabel1.setText("Codigo Curso");
 
-        jLabel3.setText("Estatus Facultad");
+        jLabel2.setText("Nombre Curso");
+
+        jLabel3.setText("Estatus Curso");
 
         BTNREGISTRAR.setText("Registrar");
         BTNREGISTRAR.addActionListener(new java.awt.event.ActionListener() {
@@ -84,37 +85,39 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(143, 143, 143)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtestatus, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnombre))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(31, 31, 31)
-                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtnombre)
-                            .addComponent(txtestatus))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addComponent(Label_status)
-                .addGap(60, 60, 60)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtcodigo)))
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BTNREGISTRAR)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(BTNBUSCAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BTNELIMINAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BTNMODIFICAR, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(109, 109, 109))
+                .addContainerGap(137, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Label_status)
+                .addGap(253, 253, 253))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -127,18 +130,17 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3)
                             .addComponent(txtestatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Label_status)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BTNREGISTRAR)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BTNMODIFICAR)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BTNELIMINAR)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BTNBUSCAR)))))
-                .addContainerGap(111, Short.MAX_VALUE))
+                        .addGap(25, 25, 25)
+                        .addComponent(BTNREGISTRAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BTNMODIFICAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BTNELIMINAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTNBUSCAR)))
+                .addGap(5, 5, 5)
+                .addComponent(Label_status)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,7 +153,7 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
             java.sql.Connection conectar = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
 
             java.sql.Connection cn= java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
-            java.sql.PreparedStatement pst = cn.prepareStatement("insert into facultades values(?,?,?,?,?)");
+            java.sql.PreparedStatement pst = cn.prepareStatement("insert into cursos values(?,?,?,?)");
 
             pst.setString(1, "0");
             pst.setString(2, txtcodigo.getText().trim());
@@ -164,7 +166,7 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
             txtcodigo.setText("");
             txtnombre.setText("");
             txtestatus.setText("");
-            
+           
 
             Label_status.setText("Registro exitoso");
 
@@ -179,7 +181,7 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
             String ID = txtcodigo.getText().trim();
 
             java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
-            PreparedStatement pst = cn.prepareStatement("update facultades set codigo_facultad = ?, nombre_facultad = ?, estatus_facultad = ? where ID = " + txtcodigo);
+            PreparedStatement pst = cn.prepareStatement("update cursos set codigo_curso = ?, nombre_curso = ?, estatus_curso = ?, telefono_maetro = ? where ID = " + txtcodigo);
 
             pst.setString(1, txtcodigo.getText().trim());
             pst.setString(2, txtnombre.getText().trim());
@@ -197,7 +199,7 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
-            PreparedStatement pst = cn.prepareStatement("delete from facultades where ID = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from cursos where ID = ?");
 
             pst.setString(1, txtcodigo.getText().trim());
             pst.executeUpdate();
@@ -205,8 +207,7 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
             txtcodigo.setText("");
             txtnombre.setText("");
             txtestatus.setText("");
-            
-            txtestatus.setText("");
+           
 
             Label_status.setText("Registro eliminado.");
 
@@ -218,16 +219,16 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
-            PreparedStatement pst = cn.prepareStatement("select * from facultades where ID = ?");
+            PreparedStatement pst = cn.prepareStatement("select * from cursos where ID = ?");
             pst.setString(1, txtcodigo.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
             if(rs.next()){
-                txtcodigo.setText(rs.getString("codigo_facultad"));
-                txtnombre.setText(rs.getString("nombre_facultad"));
-                txtestatus.setText(rs.getString("estatus_facultad"));
-                
+                txtcodigo.setText(rs.getString("codigo_curso"));
+                txtnombre.setText(rs.getString("nombre_curso"));
+                txtestatus.setText(rs.getString("estatus_curso"));
+               
 
             } else {
                 JOptionPane.showMessageDialog(null, "Persona no registrada.");
@@ -238,6 +239,40 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_BTNBUSCARActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MantenimientoCursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MantenimientoCursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MantenimientoCursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MantenimientoCursos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MantenimientoCursos().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNBUSCAR;

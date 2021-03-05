@@ -5,16 +5,11 @@
  */
 package vista;
 
-import com.sun.jdi.connect.spi.Connection;
-import datos.EmpleadoDAO;
-import datos.VendedorDAO;
-import domain.Empleado;
-import domain.Vendedor;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *

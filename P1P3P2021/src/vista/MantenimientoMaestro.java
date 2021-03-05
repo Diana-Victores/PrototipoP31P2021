@@ -5,16 +5,11 @@
  */
 package vista;
 
-import com.sun.jdi.connect.spi.Connection;
-import datos.EmpleadoDAO;
-import datos.VendedorDAO;
-import domain.Empleado;
-import domain.Vendedor;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -199,7 +194,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
             java.sql.Connection conectar = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
 
             java.sql.Connection cn= java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
-            java.sql.PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?,?)");
+            java.sql.PreparedStatement pst = cn.prepareStatement("insert into maestros values(?,?,?,?,?,?,?)");
 
             pst.setString(1, "0");
             pst.setString(2, txtcodigo.getText().trim());
@@ -251,7 +246,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
             java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
-            PreparedStatement pst = cn.prepareStatement("delete from maestro where ID = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from maestros where ID = ?");
 
             pst.setString(1, txtcodigo.getText().trim());
             pst.executeUpdate();
@@ -273,7 +268,7 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
-            PreparedStatement pst = cn.prepareStatement("select * from alumnos where ID = ?");
+            PreparedStatement pst = cn.prepareStatement("select * from maestros where ID = ?");
             pst.setString(1, txtcodigo.getText().trim());
 
             ResultSet rs = pst.executeQuery();
