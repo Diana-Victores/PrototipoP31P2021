@@ -49,6 +49,12 @@ public class MdiGeneral extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem5 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem6 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem7 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem8 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem9 = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
@@ -115,11 +121,75 @@ public class MdiGeneral extends javax.swing.JFrame {
 
         jRadioButtonMenuItem2.setSelected(true);
         jRadioButtonMenuItem2.setText("MantenimientoFacultad");
+        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jRadioButtonMenuItem2);
 
         jRadioButtonMenuItem3.setSelected(true);
         jRadioButtonMenuItem3.setText("MantenimientoCarreras");
+        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jRadioButtonMenuItem3);
+
+        jRadioButtonMenuItem4.setSelected(true);
+        jRadioButtonMenuItem4.setText("MantenimientoCurso");
+        jRadioButtonMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem4);
+
+        jRadioButtonMenuItem5.setSelected(true);
+        jRadioButtonMenuItem5.setText("MantenimientoSecciones");
+        jRadioButtonMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem5);
+
+        jRadioButtonMenuItem6.setSelected(true);
+        jRadioButtonMenuItem6.setText("ManteniminetoSedes");
+        jRadioButtonMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem6);
+
+        jRadioButtonMenuItem7.setSelected(true);
+        jRadioButtonMenuItem7.setText("MantemientoAulas");
+        jRadioButtonMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem7);
+
+        jRadioButtonMenuItem8.setSelected(true);
+        jRadioButtonMenuItem8.setText("MantemientoJornadas");
+        jRadioButtonMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem8);
+
+        jRadioButtonMenuItem9.setSelected(true);
+        jRadioButtonMenuItem9.setText("AsignacionAlumnos");
+        jRadioButtonMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem9);
 
         jMenu1.add(jMenu3);
 
@@ -176,19 +246,64 @@ public class MdiGeneral extends javax.swing.JFrame {
         // TODO add your handling code here:
         MantenimientoAlumnos ventana = new MantenimientoAlumnos();
         jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         // TODO add your handling code here:
             MantenimientoMaestro ventana = new MantenimientoMaestro();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+            jDesktopPane1.add(ventana);
+        
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        MantenimientoFacultad ventana = new MantenimientoFacultad();
+            jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+
+    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
+        // TODO add your handling code here:
+         MantenimientoCarreras ventana = new MantenimientoCarreras();
+            jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void jRadioButtonMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem7ActionPerformed
+        // TODO add your handling code here:
+         MantenimientoAulas ventana = new MantenimientoAulas();
+            jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jRadioButtonMenuItem7ActionPerformed
+
+    private void jRadioButtonMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem4ActionPerformed
+        // TODO add your handling code here:
+          MantenimientoCursos ventana = new MantenimientoCursos();
+            jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
+
+    private void jRadioButtonMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem5ActionPerformed
+        // TODO add your handling code here:
+          MantenimientoSecciones ventana = new MantenimientoSecciones();
+            jDesktopPane1.add(ventana);
+            
+    }//GEN-LAST:event_jRadioButtonMenuItem5ActionPerformed
+
+    private void jRadioButtonMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        MantenimientoSedes ventana = new MantenimientoSedes();
+            jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jRadioButtonMenuItem6ActionPerformed
+
+    private void jRadioButtonMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        MantenimientoJornadas ventana = new MantenimientoJornadas();
+            jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jRadioButtonMenuItem8ActionPerformed
+
+    private void jRadioButtonMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        AsignacionAlumnos ventana = new AsignacionAlumnos();
+            jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jRadioButtonMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,5 +366,11 @@ public class MdiGeneral extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem6;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem7;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem8;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
