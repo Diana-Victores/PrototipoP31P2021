@@ -173,16 +173,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNMODIFICARActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BTNELIMINAR">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNELIMINARActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BTNBUSCAR">
       <Properties>
         <Property name="text" type="java.lang.String" value="BUSCAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNBUSCARActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Label_status">
     </Component>

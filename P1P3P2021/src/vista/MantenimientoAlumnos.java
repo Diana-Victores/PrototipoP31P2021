@@ -10,7 +10,10 @@ import datos.EmpleadoDAO;
 import datos.VendedorDAO;
 import domain.Empleado;
 import domain.Vendedor;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -77,10 +80,25 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
         });
 
         BTNMODIFICAR.setText("Modificar");
+        BTNMODIFICAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNMODIFICARActionPerformed(evt);
+            }
+        });
 
         BTNELIMINAR.setText("Eliminar");
+        BTNELIMINAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNELIMINARActionPerformed(evt);
+            }
+        });
 
         BTNBUSCAR.setText("BUSCAR");
+        BTNBUSCAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNBUSCARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,9 +188,9 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
      try {
             Class.forName("com.mysql.jdbc.Driver");
-            java.sql.Connection conectar = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/SIU","root","");
+            java.sql.Connection conectar = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
 
-            java.sql.Connection cn= java.sql.DriverManager.getConnection("jdbc:mysql://localhost/SIU","root","");
+            java.sql.Connection cn= java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
             java.sql.PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?,?)");
 
             pst.setString(1, "0");
@@ -199,6 +217,78 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
         }                                     
 
     }//GEN-LAST:event_BTNREGISTRARActionPerformed
+
+    private void BTNMODIFICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNMODIFICARActionPerformed
+        // TODO add your handling code here:
+          try {
+            String ID = txtcarnet.getText().trim();
+
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("update alumnos set carnet_alumno = ?, nombre_alumno = ?, direccion_alumno = ?, telefono_alumno = ?, email_alumno = ?, estatus_alumno = ? where ID = " + txtcarnet);
+
+            pst.setString(1, txtcarnet.getText().trim());
+            pst.setString(2, txtalumno.getText().trim()); 
+            pst.setString(3, txtdireccion.getText().trim()); 
+            pst.setString(4, txttelefono.getText().trim());
+            pst.setString(5, txtemail.getText().trim()); 
+            pst.setString(6, txtestatus.getText().trim());   
+            pst.executeUpdate();
+
+            Label_status.setText("Modificación exitosa.");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_BTNMODIFICARActionPerformed
+
+    private void BTNELIMINARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNELIMINARActionPerformed
+        // TODO add your handling code here:
+        try {
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from alumnos where ID = ?");
+
+            pst.setString(1, txtcarnet.getText().trim());
+            pst.executeUpdate();
+            
+            txtcarnet.setText("");
+            txtalumno.setText("");
+            txtdireccion.setText("");
+            txttelefono.setText("");
+            txtemail.setText("");
+            txtestatus.setText("");
+            
+            
+            Label_status.setText("Registro eliminado.");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_BTNELIMINARActionPerformed
+
+    private void BTNBUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBUSCARActionPerformed
+        // TODO add your handling code here:
+         try{
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("select * from alumnos where ID = ?");
+            pst.setString(1, txtcarnet.getText().trim());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                txtcarnet.setText(rs.getString("carnet_alumno"));
+                txtalumno.setText(rs.getString("nombre_alumno"));
+                txtdireccion.setText(rs.getString("direccion_alumno"));
+                txttelefono.setText(rs.getString("telefono_alumno"));
+                txtemail.setText(rs.getString("email_alumno"));
+                txtestatus.setText(rs.getString("estatus_alumno"));
+               
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Persona no registrada.");
+            }
+
+        }catch (Exception e){
+
+    }     
+    }//GEN-LAST:event_BTNBUSCARActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

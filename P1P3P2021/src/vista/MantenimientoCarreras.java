@@ -5,6 +5,17 @@
  */
 package vista;
 
+import com.sun.jdi.connect.spi.Connection;
+import datos.EmpleadoDAO;
+import datos.VendedorDAO;
+import domain.Empleado;
+import domain.Vendedor;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Diana
@@ -27,21 +38,223 @@ public class MantenimientoCarreras extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtcodigo = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
+        txtcodigofacultad = new javax.swing.JTextField();
+        txtcarreraestatus = new javax.swing.JTextField();
+        BTNREGISTRAR = new javax.swing.JButton();
+        BTNMODIFICAR = new javax.swing.JButton();
+        BTNELIMINAR = new javax.swing.JButton();
+        BTNBUSCAR = new javax.swing.JButton();
+        Label_status = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Codigo Carreras");
+
+        jLabel2.setText("Nombres Carreras");
+
+        jLabel3.setText("Codigo Facultad");
+
+        jLabel4.setText("Estatus Carrera");
+
+        BTNREGISTRAR.setText("Registrar");
+        BTNREGISTRAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNREGISTRARActionPerformed(evt);
+            }
+        });
+
+        BTNMODIFICAR.setText("Modificar");
+        BTNMODIFICAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNMODIFICARActionPerformed(evt);
+            }
+        });
+
+        BTNELIMINAR.setText("Eliminar");
+        BTNELIMINAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNELIMINARActionPerformed(evt);
+            }
+        });
+
+        BTNBUSCAR.setText("BUSCAR");
+        BTNBUSCAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNBUSCARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtcodigo)
+                            .addComponent(txtnombre)
+                            .addComponent(txtcodigofacultad)
+                            .addComponent(txtcarreraestatus, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Label_status)
+                        .addGap(58, 58, 58)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTNREGISTRAR)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(BTNBUSCAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BTNELIMINAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BTNMODIFICAR, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtcodigofacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BTNREGISTRAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BTNMODIFICAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BTNELIMINAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTNBUSCAR))
+                    .addComponent(Label_status, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtcarreraestatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTNREGISTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNREGISTRARActionPerformed
+        // TODO add your handling code here:
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            java.sql.Connection conectar = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
+
+            java.sql.Connection cn= java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
+            java.sql.PreparedStatement pst = cn.prepareStatement("insert into carreras values(?,?,?,?,?,¿)");
+
+            pst.setString(1, "0");
+            pst.setString(2, txtcodigo.getText().trim());
+            pst.setString(3, txtnombre.getText().trim());
+            pst.setString(4, txtcodigofacultad.getText().trim());
+            pst.setString(5, txtcarreraestatus.getText().trim());
+            
+
+            pst.executeUpdate();
+
+            txtcodigo.setText("");
+            txtnombre.setText("");
+            txtcodigofacultad.setText("");
+            txtcarreraestatus.setText("");
+          
+
+            Label_status.setText("Registro exitoso");
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_BTNREGISTRARActionPerformed
+
+    private void BTNMODIFICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNMODIFICARActionPerformed
+        // TODO add your handling code here:
+        try {
+            String ID = txtcodigo.getText().trim();
+
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("update carreras set codigo_carrera = ?, nombre_carrera = ?, codigo_facultad = ?, estatus_carrera = ? where ID = " + txtcodigo);
+
+            pst.setString(1, txtcodigo.getText().trim());
+            pst.setString(2, txtnombre.getText().trim());
+            pst.setString(3, txtcodigofacultad.getText().trim());
+            pst.setString(4, txtcarreraestatus.getText().trim());
+          
+            pst.executeUpdate();
+
+            Label_status.setText("Modificación exitosa.");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_BTNMODIFICARActionPerformed
+
+    private void BTNELIMINARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNELIMINARActionPerformed
+        // TODO add your handling code here:
+        try {
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from carreras where ID = ?");
+
+            pst.setString(1, txtcodigo.getText().trim());
+            pst.executeUpdate();
+
+            txtcodigo.setText("");
+            txtnombre.setText("");
+            txtcodigofacultad.setText("");
+            txtcarreraestatus.setText("");
+        
+
+            Label_status.setText("Registro eliminado.");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_BTNELIMINARActionPerformed
+
+    private void BTNBUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBUSCARActionPerformed
+        // TODO add your handling code here:
+        try{
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("select * from carreras where ID = ?");
+            pst.setString(1, txtcodigo.getText().trim());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                txtcodigo.setText(rs.getString("codigo_maestro"));
+                txtnombre.setText(rs.getString("nombre_maestro"));
+                txtcodigofacultad.setText(rs.getString("direccion_maestro"));
+                txtcarreraestatus.setText(rs.getString("telefono_maetro"));
+                
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Persona no registrada.");
+            }
+
+        }catch (Exception e){
+
+        }
+    }//GEN-LAST:event_BTNBUSCARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +292,18 @@ public class MantenimientoCarreras extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNBUSCAR;
+    private javax.swing.JButton BTNELIMINAR;
+    private javax.swing.JButton BTNMODIFICAR;
+    private javax.swing.JButton BTNREGISTRAR;
+    private javax.swing.JLabel Label_status;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JTextField txtcarreraestatus;
+    private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtcodigofacultad;
+    private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }

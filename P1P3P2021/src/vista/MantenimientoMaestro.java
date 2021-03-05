@@ -5,6 +5,17 @@
  */
 package vista;
 
+import com.sun.jdi.connect.spi.Connection;
+import datos.EmpleadoDAO;
+import datos.VendedorDAO;
+import domain.Empleado;
+import domain.Vendedor;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Diana
@@ -27,21 +38,281 @@ public class MantenimientoMaestro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtcodigo = new javax.swing.JTextField();
+        txtnombremaestro = new javax.swing.JTextField();
+        txtdireccion = new javax.swing.JTextField();
+        txttelefono = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        txtestatus = new javax.swing.JTextField();
+        BTNREGISTRAR = new javax.swing.JButton();
+        BTNMODIFICAR = new javax.swing.JButton();
+        BTNELIMINAR = new javax.swing.JButton();
+        BTNBUSCAR = new javax.swing.JButton();
+        Label_status = new javax.swing.JLabel();
+
+        jLabel1.setText("Codigo Maestro");
+
+        jLabel2.setText("Nombre Maestro");
+
+        jLabel3.setText("Direccion Maestro");
+
+        jLabel4.setText("Telefono Maesrro");
+
+        jLabel5.setText("Email Maestro");
+
+        jLabel6.setText("Estatus Maestro");
+
+        BTNREGISTRAR.setText("Registrar");
+        BTNREGISTRAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNREGISTRARActionPerformed(evt);
+            }
+        });
+
+        BTNMODIFICAR.setText("Modificar");
+        BTNMODIFICAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNMODIFICARActionPerformed(evt);
+            }
+        });
+
+        BTNELIMINAR.setText("Eliminar");
+        BTNELIMINAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNELIMINARActionPerformed(evt);
+            }
+        });
+
+        BTNBUSCAR.setText("BUSCAR");
+        BTNBUSCAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNBUSCARActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtdireccion)
+                            .addComponent(txtemail))))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnombremaestro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txttelefono)
+                            .addComponent(txtestatus))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BTNREGISTRAR)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(BTNBUSCAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BTNELIMINAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BTNMODIFICAR, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Label_status)
+                        .addGap(60, 60, 60))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnombremaestro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtestatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(BTNREGISTRAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BTNMODIFICAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BTNELIMINAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTNBUSCAR)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Label_status)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BTNREGISTRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNREGISTRARActionPerformed
+        // TODO add your handling code here:
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            java.sql.Connection conectar = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
+
+            java.sql.Connection cn= java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1","root","");
+            java.sql.PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?,?)");
+
+            pst.setString(1, "0");
+            pst.setString(2, txtcodigo.getText().trim());
+            pst.setString(3, txtnombremaestro.getText().trim());
+            pst.setString(4, txtdireccion.getText().trim());
+            pst.setString(5, txttelefono.getText().trim());
+            pst.setString(6, txtemail.getText().trim());
+            pst.setString(7, txtestatus.getText().trim());
+
+            pst.executeUpdate();
+
+            txtcodigo.setText("");
+            txtnombremaestro.setText("");
+            txtdireccion.setText("");
+            txttelefono.setText("");
+            txtemail.setText("");
+            txtestatus.setText("");
+
+            Label_status.setText("Registro exitoso");
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_BTNREGISTRARActionPerformed
+
+    private void BTNMODIFICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNMODIFICARActionPerformed
+        // TODO add your handling code here:
+        try {
+            String ID = txtcodigo.getText().trim();
+
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("update maestros set codigo_maestro = ?, nombre_maestro = ?, direccion_maestro = ?, telefono_maetro = ?, email_maestro = ?, estatus_maestro = ? where ID = " + txtcodigo);
+
+            pst.setString(1, txtcodigo.getText().trim());
+            pst.setString(2, txtnombremaestro.getText().trim());
+            pst.setString(3, txtdireccion.getText().trim());
+            pst.setString(4, txttelefono.getText().trim());
+            pst.setString(5, txtemail.getText().trim());
+            pst.setString(6, txtestatus.getText().trim());
+            pst.executeUpdate();
+
+            Label_status.setText("Modificación exitosa.");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_BTNMODIFICARActionPerformed
+
+    private void BTNELIMINARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNELIMINARActionPerformed
+        // TODO add your handling code here:
+        try {
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("delete from maestro where ID = ?");
+
+            pst.setString(1, txtcodigo.getText().trim());
+            pst.executeUpdate();
+
+            txtcodigo.setText("");
+            txtnombremaestro.setText("");
+            txtdireccion.setText("");
+            txttelefono.setText("");
+            txtemail.setText("");
+            txtestatus.setText("");
+
+            Label_status.setText("Registro eliminado.");
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_BTNELIMINARActionPerformed
+
+    private void BTNBUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBUSCARActionPerformed
+        // TODO add your handling code here:
+        try{
+            java.sql.Connection cn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost/siup1", "root", "");
+            PreparedStatement pst = cn.prepareStatement("select * from alumnos where ID = ?");
+            pst.setString(1, txtcodigo.getText().trim());
+
+            ResultSet rs = pst.executeQuery();
+
+            if(rs.next()){
+                txtcodigo.setText(rs.getString("codigo_maestro"));
+                txtnombremaestro.setText(rs.getString("nombre_maestro"));
+                txtdireccion.setText(rs.getString("direccion_maestro"));
+                txttelefono.setText(rs.getString("telefono_maetro"));
+                txtemail.setText(rs.getString("email_maestro"));
+                txtestatus.setText(rs.getString("estatus_maestro"));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Persona no registrada.");
+            }
+
+        }catch (Exception e){
+
+        }
+    }//GEN-LAST:event_BTNBUSCARActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNBUSCAR;
+    private javax.swing.JButton BTNELIMINAR;
+    private javax.swing.JButton BTNMODIFICAR;
+    private javax.swing.JButton BTNREGISTRAR;
+    private javax.swing.JLabel Label_status;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtdireccion;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtestatus;
+    private javax.swing.JTextField txtnombremaestro;
+    private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }
