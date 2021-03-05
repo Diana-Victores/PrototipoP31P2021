@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author visitante
+ * @author Diana
  */
 public class VendedorDAO {
 
